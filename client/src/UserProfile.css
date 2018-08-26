@@ -6,7 +6,6 @@
 
 .profile-picture {
     width: 95%;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
     margin-bottom: 18px;
 }
 
@@ -44,8 +43,7 @@
     background: rgb(245, 244, 244);
     border-radius: 100%;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-    padding: 1.2em;
-    margin-left: 10px;
+    padding: 15px;
 
 }
 
@@ -100,7 +98,7 @@
 .modal {
    display: block;
    width: 600px;
-   height: 750px;
+   height: 765px;
    max-width: 100%;
    max-height: 100%;
    position: fixed;
@@ -110,14 +108,9 @@
    transform: translate(-50%, -50%);
    -webkit-perspective: 1300px;
    -moz-perspective: 1300px;
-   perspective: 1300px;
    background: #FDFDFD;
-   transform: translateX(-50%) translateY(-50%);
-   -webkit-transform: translateX(-50%) translateY(-50%);
-   -moz-transform: translateX(-50%) translateY(-50%);
-   -ms-transform: translateX(-50%) translateY(-50%);
-   transform: translateX(-50%) translateY(-50%);
    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+   margin: 0;
 }
 
 
@@ -131,7 +124,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: none;
     padding: 20px 50px 20px 20px;
     text-align: left;
 }

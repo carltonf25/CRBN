@@ -13,9 +13,10 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       modalOpen: false,
+      eventOffset: 0,
       rankInfo: {
-        rank: 0, 
-        total:0
+        rank: 0,
+        total: 0
       },
       basicInfoObj: {},
       badges: [],
@@ -25,12 +26,12 @@ class UserProfile extends Component {
         datasets: [
           {
 
-            data: [10, 20, 30 , 0],
-            backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52', '#031926']
+            data: [10, 20, 30],
+            backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52']
           },
         ],
 
-        labels: ['Vehicle', 'Home', 'Waste', 'Events'],
+        labels: ['Vehicle', 'Home', 'Waste'],
       },
       userData: {},
     };
@@ -40,6 +41,7 @@ class UserProfile extends Component {
   }
 
   render() {
+    let { eventOffset, loggedIn, chartDataObj, rankInfo, userData } = this.state;
     return (
       <div className="container-fluid">
         <div className="row">
@@ -50,24 +52,24 @@ class UserProfile extends Component {
           />
           <div className="col-sm-12 col-lg-3">
 
-          <BasicInfo
-            id={this.state.userData.id}
-            loggedIn={this.props.loggedIn}
-            basicInfo={this.state.basicInfoObj}
-          />
-          
+            <BasicInfo
+              id={this.state.userData.id}
+              loggedIn={this.props.loggedIn}
+              basicInfo={this.state.basicInfoObj}
+            />
 
-          <UserEvents badges={this.state.badges} />
-          
-         
+
+            <UserEvents badges={this.state.badges} />
+
+
           </div>
           <div className="col-sm-12 col-md-8 col-lg-5">
             <FootPrintChart
-              crbnScore={this.state.chartDataObj.crbnScore}
-              loggedIn={this.props.loggedIn}
-              chartData={this.state.chartDataObj}
-              rankInfo={this.state.rankInfo}
-              userData={this.state.userData}
+              eventOffset={eventOffset}
+              loggedIn={loggedIn}
+              chartData={chartDataObj}
+              rankInfo={rankInfo}
+              userData={userData}
             />
 
           </div>
@@ -112,14 +114,14 @@ class UserProfile extends Component {
     this.forceUpdate(this.setState(this.state));
   }
 
-  updateRank(){
+  updateRank() {
     axios.get('/all/scores')
-    .then(res =>{
-      let sortedUser = res.data.data.sort((a,b)=>{return a.score - b.score});
-      let mappedUser = sortedUser.map((el)=>{return el.id})
-      let userRank = mappedUser.indexOf(res.data.user)+ 1;
-      this.setState({rankInfo:{rank: userRank, total: res.data.data.length}})
-    }).then(this.forceUpdate())
+      .then(res => {
+        let sortedUser = res.data.data.sort((a, b) => { return a.score - b.score });
+        let mappedUser = sortedUser.map((el) => { return el.id })
+        let userRank = mappedUser.indexOf(res.data.user) + 1;
+        this.setState({ rankInfo: { rank: userRank, total: res.data.data.length } })
+      }).then(this.forceUpdate())
   }
 
   updateChart() {
@@ -135,9 +137,9 @@ class UserProfile extends Component {
 
   setUserBadges() {
     axios.get('/user/events')
-    .then(badges => {
-        this.setState({badges: badges.data.data})
-    }).then(this.forceUpdate(this.updateChart))
+      .then(badges => {
+        this.setState({ badges: badges.data.data })
+      }).then(this.forceUpdate(this.updateChart))
   }
 
   calculateScore(user) {
@@ -215,62 +217,64 @@ class UserProfile extends Component {
       return Math.round(num * multiplier) / multiplier;
     }
 
-    function eventOffsetter(){  
+    function eventOffsetter() {
       return axios.get('/user/events')
-      .then(res => {
-           try{let offsetArray = res.data.data.map((el)=> {return el.offsetscore})
-           let offsetSum = offsetArray.reduce((a, b)=>{return a+b})
-           return(offsetSum)}
-           catch(err){return 0}
-          })
+        .then(res => {
+          try {
+            let offsetArray = res.data.data.map((el) => { return el.offsetscore })
+            let offsetSum = offsetArray.reduce((a, b) => { return a + b })
+            return (offsetSum)
+          }
+          catch (err) { return 0 }
+        })
     }
 
-    
-eventOffsetter().then(res=>{eventcO2 = res;
-    /* Final Score */
-    let roundedScores = {
-      vehicle: round(vehiclecO2, 2),
-      waste: round(wastecO2, 2),
 
-      home: round(homecO2, 2),
-      event: round(eventcO2, 2),
+    eventOffsetter().then(res => {
+      eventcO2 = res;
+      /* Final Score */
+      let roundedScores = {
+        vehicle: round(vehiclecO2, 2),
+        waste: round(wastecO2, 2),
+        home: round(homecO2, 2),
+        event: round(eventcO2, 2),
+      };
 
-
-    };
-
-
-    let thecrbnScore = round(
-      ((roundedScores.vehicle + roundedScores.waste + roundedScores.home - roundedScores.event) *
-        100) /
+      let thecrbnScore = round(
+        ((roundedScores.vehicle + roundedScores.waste + roundedScores.home - roundedScores.event) *
+          100) /
         100,
-      2
-    );
+        2
+      );
 
-    let thechartDataObj = {
-      crbnScore: thecrbnScore,
-      datasets: [
-        {
-          data: [
-            roundedScores.vehicle,
-            roundedScores.home,
+      console.log('the score is: ' + thecrbnScore)
 
-            roundedScores.waste,
-            roundedScores.event,
-          ],
-          backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52', '#031926'],
-        },
-      ],
+      let thechartDataObj = {
+        crbnScore: thecrbnScore,
+        datasets: [
+          {
+            data: [
+              roundedScores.vehicle,
+              roundedScores.home,
+              roundedScores.waste,
+            ],
+            backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52'],
+          },
+        ],
 
-      labels: ['Vehicle', 'Home', 'Waste', 'Events'],
+        labels: ['Vehicle', 'Home', 'Waste'],
 
-    };
+      };
 
-    this.setState({ chartDataObj: thechartDataObj });
-    axios.post("/user/score", { score: thecrbnScore });
-    this.forceUpdate(this.updateRank)
+      this.setState({
+        chartDataObj: thechartDataObj,
+        eventOffset: eventcO2
+      });
+      axios.post("/user/score", { score: thecrbnScore });
+      this.forceUpdate(this.updateRank)
 
-    // console.log("The CRBN score is: " + thecrbnScore);
-    return thechartDataObj;
+      // console.log("The CRBN score is: " + thecrbnScore);
+      return thechartDataObj;
     })
   }
 }

@@ -38,7 +38,10 @@ class ChartDataModal extends Component {
                             <p>
                                 <label>Miles Per Gallon: </label>
                                 <input defaultValue={mpg} type="text" name="mpg" />
-                                <a href="https://www.fueleconomy.gov/feg/make.shtml" target="_blank"> Help!</a>
+                                <br />
+                                <small>
+                                    <a href="https://www.fueleconomy.gov/feg/make.shtml" target="_blank">MPG Reference</a>
+                                </small>
                             </p>
                             <p>
                                 <label>Miles Driven Annually: </label>

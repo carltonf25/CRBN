@@ -32,12 +32,12 @@ class EventsList extends Component {
                 <li key={i}>
                   {event.eventname}
                   <br />
-                  {(!(registeredEventIds.includes(event.id))) ? 
-                  <React.Fragment>
+                  {(!(registeredEventIds.includes(event.id))) 
+                  ? <React.Fragment>
                   <button id={event.id} onClick={this.registerForEvent.bind(this)} className='appBtn'>Register</button>
                   <a id={"cancel-"+event.id} className="cancelLink invisible" onClick={this.cancelLinkClicked} href="#0">Cancel Registration</a>
-                  </React.Fragment>: 
-                  <React.Fragment>
+                  </React.Fragment>
+                  : <React.Fragment>
                   <button id={event.id} onClick={this.registerForEvent.bind(this)} className='appBtn going'>Going</button>
                   <a id={"cancel-"+event.id} className="cancelLink" onClick={this.cancelLinkClicked} href="#0">Cancel Registration</a>
                   </React.Fragment>}
