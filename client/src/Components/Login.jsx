@@ -1,23 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../Login.css";
-import LoginImg from "../LoginImg.js";
-import LoginImg2 from "../LoginImg2.js";
-import Zoom from "react-reveal/Zoom";
-import { ScrollTo } from "react-scroll-to";
-import FlexView from "react-flexview";
-import FormattedText from "buildo-react-components/lib/FormattedText";
-
-const flexOne =  "Using some basic inputs from your everyday life,\nwe show how your lifestyle affects the environment.\n"
-const flexTwo =
-  "Find events you can participate in to improve your score,\nor donate to a carbon emission reducing activity of your choice.\n";
-const flexThree = "Share your score and see where you rank among others.\n";
-const flexFour = "Sign up now!  ";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
 
@@ -30,15 +16,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div className="login-form" style={LoginImg}>
-          <Zoom>
-            <div className="loginDescription">
-              <h1>Track your annual carbon emission output.</h1>
-              <h4>
-                Share your score / Improve your output / Shame your friends
-              </h4>
-            </div>
-          </Zoom>
+        <div className="login-form">
 
           {this.state.user ? (
             <br />
@@ -79,17 +57,6 @@ class Login extends Component {
                     </button>
                     <br />
                   </form>
-                  <a href="/github/auth">
-                    <button className="gitHubButton" type="submit">
-                      GitHub
-                    </button>
-                  </a>
-                  <br />
-                  <a href="/auth/facebook">
-                    <button className="fbButton" type="submit">
-                      Facebook
-                    </button>
-                  </a>
                 </div>
               ) : (
                 <div>
@@ -107,67 +74,10 @@ class Login extends Component {
                       Login
                     </button>
                   </form>
-                  <a href="/github/auth">
-                    <button className="gitHubButton" type="submit">
-                      GitHub
-                    </button>
-                  </a>
-                  <br />
-                   <a href="/auth/facebook/">
-                    <button className="fbButton" type="submit">
-                      Facebook
-                    </button>
-                  </a>
                 </div>
               )}
-              <ScrollTo>
-                {scroll => (
-                  <a onClick={() => scroll(0, 2000)}>
-                    <h4 className="learnMore">
-                      <p>Learn More</p>
-                      <i className="fas fa-chevron-circle-down fa-3x" />
-                    </h4>
-                  </a>
-                )}
-              </ScrollTo>
             </div>
           )}
-        </div>
-        <div className="login-2nd" style={LoginImg2}>
-          <Zoom>
-            <FlexView key="1" height={75} marginTop={40} hAlignContent="center">
-              <FormattedText key="7" >{flexOne}</FormattedText>
-            </FlexView>
-            <FlexView height={75} marginTop={40} hAlignContent="center">
-            <i className="car fas fa-car-side fa-3x" />
-            </FlexView>
-            <FlexView height={75} marginTop={40} hAlignContent="center">
-              <FormattedText key="2">{flexTwo}</FormattedText>
-            </FlexView>
-            <FlexView height={75} marginTop={40} hAlignContent="center">
-            <i className="tree fas fa-seedling fa-3x" />
-            </FlexView>
-            <FlexView height={35} marginTop={40} hAlignContent="center">
-              <FormattedText key="3">{flexThree}</FormattedText>
-            </FlexView>
-            <FlexView height={75} marginTop={40} hAlignContent="center">
-            <i className="star far fa-star fa-3x" />
-            </FlexView>
-            <div className="signUp">
-              <ScrollTo>
-                {scroll => (
-                  <a onClick={() => scroll(0, 0)}>
-                    <FlexView height={40} marginTop={10} hAlignContent="center">
-                      <FormattedText key="4">{flexFour}</FormattedText>
-                    </FlexView>
-                    <FlexView hAlignContent="center">
-                    <i className="fas fa-arrow-circle-up fa-4x" />
-                    </FlexView>
-                  </a>
-                )}
-              </ScrollTo>
-            </div>
-          </Zoom>
         </div>
       </div>
     );

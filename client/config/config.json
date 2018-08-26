@@ -1,0 +1,16 @@
+{
+    "development": {
+      "username": "postgres",
+      "password": null,
+      "database": "crbn",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    },
+    "development": {
+      "username": "postgres",
+      "password": null,
+      "database": "crbn",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+}

@@ -5,7 +5,6 @@ import '../UserProfile.css';
 import axios from 'axios';
 import grid from '../grid.json';
 import StaticBadge from './StaticBadge';
-import ProfileImg from "../ProfileImg.js";
  
 class UserPage extends Component {
   
@@ -44,7 +43,7 @@ class UserPage extends Component {
   render() {
 
      return (
-      <div className="container-fluid" style={ProfileImg}>
+      <div className="container-fluid">
         <div className="row">
 
           <div className="col-sm-12 col-md-3 col-lg-3">

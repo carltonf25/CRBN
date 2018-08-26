@@ -1,7 +1,5 @@
 const passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const models = require('./models');
@@ -16,54 +14,6 @@ const setupAuth = (app) => {
         secret: 'whatever',
         resave: true,
         saveUninitialized: true
-    }));
-
-    passport.use(new GitHubStrategy({
-        clientID: process.env.client_id,
-        clientSecret: process.env.client_secret,
-        callbackURL: process.env.callbackURL
-    }, (accessToken, refreshToken, profile, done) => {
-        models.user.findOrCreate({
-            where: {
-                githubid: profile.id,
-            }
-        }).then(result => {
-            models.user.update({
-                username: profile.username,
-                imgUrl: profile.photos[0].value
-            }, {
-                where: {
-                    githubid: profile.id
-                }
-                })
-            return done(null, result[0]);
-        })
-            .catch(done)
-    }));
-
-    passport.use(new FacebookStrategy({
-        clientID: process.env.fb_client_id,
-        clientSecret: process.env.fb_client_secret,
-        callbackURL: process.env.fb_callbackURL
-    }, (accessToken, refreshToken, profile, done) => {
-
-        models.user.findOrCreate({
-            where: {
-                fbid: profile.id,
-            }
-        })
-        .then(result => {
-            models.user.update({
-                username: profile.id,
-                // imgUrl: profile.photos[0].value
-            }, {
-                where: {
-                    fbid: profile.id
-                }
-                })
-            return done(null, result[0]);
-        })
-            .catch(done)
     }));
 
     passport.use(new LocalStrategy({
@@ -170,21 +120,10 @@ const setupAuth = (app) => {
             res.json({ user: cleanUser });
         }
     )
-    // adding a session destroy on request line to fix github cache issue
-    app.get('/github/login', passport.authenticate('github'));
-
-
-    app.get('/github/auth',
-        passport.authenticate('github', { failureRedirect: '/github/login' }),
-        (req, res) => {
-            res.redirect('/');
-        });
-
 
     app.get('/auth/facebook', passport.authenticate('facebook'));
     app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
-
 
     app.get('/logout', function (req, res, next) {
         req.session.destroy();
@@ -193,7 +132,6 @@ const setupAuth = (app) => {
 
 
 };
-
 
 const ensureAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {

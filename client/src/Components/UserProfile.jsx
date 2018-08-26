@@ -6,7 +6,6 @@ import ChartDataModal from "./ChartDataModal";
 import "../UserProfile.css";
 import axios from "axios";
 import grid from "../grid.json";
-import ProfileImg from "../ProfileImg.js";
 import UserEvents from "./UserEvents";
 
 class UserProfile extends Component {
@@ -27,8 +26,7 @@ class UserProfile extends Component {
           {
 
             data: [10, 20, 30 , 0],
-            backgroundColor: ['#FF0000', '#ff9933', '#ffff00', '#470000'],
-            borderColor: ["#000000", "#000000", "#000000", "#000000"]
+            backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52', '#031926']
           },
         ],
 
@@ -43,7 +41,7 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <div className="container-fluid" style={ProfileImg}>
+      <div className="container-fluid">
         <div className="row">
           <ChartDataModal
             updateChart={this.updateChart.bind(this)}
@@ -259,7 +257,7 @@ eventOffsetter().then(res=>{eventcO2 = res;
             roundedScores.waste,
             roundedScores.event,
           ],
-          backgroundColor: ['#FF0000', '#ff9933', '#ffff00', '#08E6C8'],
+          backgroundColor: ['#08e6c8', '#a7ed9c', '#6a4d52', '#031926'],
         },
       ],
 

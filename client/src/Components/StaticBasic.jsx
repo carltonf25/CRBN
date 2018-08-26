@@ -1,9 +1,6 @@
 
 import React, {Component} from 'react';
-import "../BasicInfo.css";
 
-
-    
 class StaticBasic extends Component 
 {
 

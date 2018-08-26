@@ -3,7 +3,6 @@ import axios from 'axios';
 import AppHeader from "./AppHeader"
 import AppFooter from "./AppFooter"
 import "../App.css";
-import LdrBrdImg from "../LdrBrdImg.js";
 
 
 class LeaderBoard extends Component{
@@ -34,7 +33,7 @@ class LeaderBoard extends Component{
 
             <div>
             <AppHeader />
-            <div style={LdrBrdImg}>
+            <div>
             <table className="table table-hover" style={textStyle} >
               <thead>
                 <tr>

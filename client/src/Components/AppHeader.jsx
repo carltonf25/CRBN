@@ -17,7 +17,7 @@ class AppHeader extends Component {
 
     return (
   
-      <nav className="App navbar navbar-expand-lg navbar-light ">
+      <nav className="App-header navbar navbar-expand-lg navbar-light">
         {/*<header className="App-header">*/}
           <h1 className="App-title" >CRBN</h1>
            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

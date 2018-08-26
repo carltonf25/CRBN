@@ -1,162 +1,164 @@
 
 body {
-    background-color: #e3ffdf;
-    font-family: 'Quicksand', sans-serif;
-    text-shadow: 0 1 4px rgba(126, 126, 126, 0.25);
+  background-color: #ecffea;
+  font-family: 'Quicksand', sans-serif;
+  text-shadow: 0 1 4px rgba(126, 126, 126, 0.25);
 
-    margin: 0;
+  margin: 0;
 }
 
 .App {
-  text-align: center;
-  color: #2e2e2e;
+text-align: center;
+color: #2e2e2e;
 }
 
 .App-header {
-  background-color: #FDFDFD;
-  color: #08E6C8;
-  height: 60px;
-  padding: 10px;
-  text-align: left;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+background-color: #FDFDFD;
+color: #08E6C8;
+height: 60px;
+padding: 10px;
+text-align: left;
+box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 }
 
 .App-header h1 {
-  font-size: 2em;
-  text-align: left; 
-  display: inline;
-  margin-left: 30px;
+font-size: 2em;
+text-align: left; 
+display: inline;
+margin-left: 30px;
 }
 
 .App-header .appBtn {
-  float: right;
-  margin-right: 30px;
-}
-
-.appBtn, .gitHubButton, .fbButton {
-  background: #fff;
-  text-transform: uppercase;
-  color: #08E6C8;
-  padding: 5px 10px;
-  border: .5px solid lightgrey;
-  transition: 0.3s ease-in-out; 
-  box-shadow: 2px 2px 30px 2px rgba(231,231,231,0.31);
-  cursor: pointer;
-}
-
-.appBtn a {
-  text-transform: uppercase;
-  color: #08E6C8;
-  text-decoration: none;
-  }
-
-  .going {
-    background: #08E6C8;
-    color: #fff;
-    padding: 7px 10px;
-    border: none;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-    cursor: default;
-  }
-
-.appBtn:hover,  .gitHubButton:hover, .fbButton:hover {
-  background: #08E6C8 ;
-  color: #fff;
-  padding: 7px 10px;
-  border: none;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+float: right;
+margin-right: 30px;
 }
 
 .appBtn a:hover {
-  color: #fff;
-  
+color: #fff;
 }
 
-.login-form .appBtn,  .gitHubButton, .fbButton {
-  background: #fff;
-  color: rgb(14, 201, 176);
-  padding: 7px 10px;
-  border: none;  
+.appBtn, .gitHubButton {
+background: #fff;
+text-transform: uppercase;
+color: #08E6C8;
+padding: 5px 10px;
+border: .5px solid lightgrey;
+transition: 0.3s ease-in-out; 
+box-shadow: 2px 2px 30px 2px rgba(231,231,231,0.31);
+cursor: pointer;
 }
 
-.login-form h3:first-child {
-  margin-top: 60px;
+.appBtn a {
+text-transform: uppercase;
+color: #08E6C8;
+text-decoration: none;
 }
 
-.login-form .appBtn:hover,  .gitHubButton:hover, .fbButton:hover {
+.going {
   background: #08E6C8;
   color: #fff;
   padding: 7px 10px;
   border: none;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  cursor: default;
 }
 
-.appBtn:active, .gitHubButton:active, .fbButton:active {
-  box-shadow: 2px -1px 10px 1px rgba(231,231,231,0.31);
+.appBtn:hover,  .gitHubButton:hover {
+background: #08E6C8 ;
+color: #fff;
+padding: 7px 10px;
+border: none;
+box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.appBtn a:hover {
+color: #fff;
+}
+
+.login-form .appBtn,  .gitHubButton {
+background: #fff;
+color: rgb(14, 201, 176);
+padding: 7px 10px;
+border: none;  
+}
+
+.login-form h3:first-child {
+margin-top: 60px;
+}
+
+.login-form .appBtn:hover,  .gitHubButton:hover {
+background: #08E6C8;
+color: #fff;
+padding: 7px 10px;
+border: none;
+}
+
+.appBtn:active, .gitHubButton:active {
+box-shadow: 2px -1px 10px 1px rgba(231,231,231,0.31);
 
 }
 
-.appBtn:focus, .gitHubButton:focus, .fbButton:focus {
-  outline: 0;
+.appBtn:focus, .gitHubButton:focus {
+outline: 0;
 }
 
 .App-title {
-  color: #08E6C8;
-  font-size: 1.5em;
-  font-weight: 800;
+font-size: 1.5em;
+font-weight: 800;
 }
 
 .App-intro {
-  font-size: large;
+font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
 }
 
 .loginRegisterSwitch {
-  margin-left: 10px;
-  margin-bottom: 15px;
-  border: none;
-  background: none;
-  border-bottom: 1px solid #bebebe;
-  text-transform: uppercase;
+margin-left: 10px;
+margin-bottom: 15px;
+border: none;
+background: none;
+border-bottom: 1px solid #bebebe;
+text-transform: uppercase;
 }
 
 .loginRegisterSwitch:focus {
-  outline: 0;
-  border-bottom: 1.5px solid #08E6C8;
+outline: 0;
+border-bottom: 1.5px solid #08E6C8;
 }
 
 .loginRegisterSwitch::after {
-  outline: 0;
-  border-bottom: 1.5px solid #08E6C8;
+outline: 0;
+border-bottom: 1.5px solid #08E6C8;
 }
 
 .user-form {
-  margin-top: 125px;
+margin-top: 125px;
 }
 
 .user-form h2 {
-  margin-bottom: 30px;
-  color: #0f0f0f;
-  font-weight: 700; 
+margin-bottom: 30px;
+color: #0f0f0f;
+font-weight: 700; 
 }
 
 .user-form input {
-  background: none;
-  border: none;
-  border-bottom: 1px solid #bebebe;
-  margin-left: 20px;
+background: none;
+border: none;
+border-bottom: 1px solid #bebebe;
+margin-left: 20px;
 }
 
 .user-form input:focus {
-  outline: 0;
+outline: 0;
 }
 
-.user-form form .appBtn, .gitHubButton, .fbButton{
-  margin-top: 25px;
-  width: 150px;
+.user-form form .appBtn, .gitHubButton{
+margin-top: 25px;
+width: 150px;
 }
 
 /* Event Page Styles */
@@ -170,75 +172,58 @@ display: block;
 }
 
 .events ul {
-  list-style-type: none;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0;
+list-style-type: none;
+margin: 0 auto;
+text-align: center;
+padding: 0;
 }
 
 .events ul li {
-  font-size: 1.2em;
-  margin-top: 4%;
-  border-bottom: 1px solid #bebebe;
+font-size: 1.2em;
+margin-top: 4%;
+border-bottom: 1px solid #bebebe;
 }
 
 .events ul li button {
-  font-size: 14px;
-  margin-top: 10px;
-  margin-bottom: 25px;
+font-size: 14px;
+margin-top: 10px;
+margin-bottom: 25px;
 }
 
 .event-page {
-  width: 100%;
-  margin-top: 100px;
+width: 100%;
+margin-top: 100px;
 }
 
 .event-info-container {
-  margin: 0 auto;
+margin: 0 auto;
 }
 
 .event-image {
-  width: 70%;
-  margin: 0 auto;
+width: 70%;
+margin: 0 auto;
 }
 
 .appFooter {
-  background: #fdfdfd;
-  color: #08E6C8;
-  font-weight: 500;
-  font-size: 16px;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-  display: flex;
-  justify-content: center;
-  align-items: bottom;
-  width: 100%;
-  bottom: 0px;
-  height: 30px;
-
-  position: fixed;
-  
+background: #fdfdfd;
+color: #08E6C8;
+font-weight: 500;
+font-size: 16px;
+box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+bottom: 0px;
+height: 60px;
+display: flex;
+position: fixed;
 }
 
 .container-fluid {
-  margin: 0 auto;
-  width: 100%;
+margin: 0 auto;
+width: 100%;
 }
 
 .badges {
-  border-radius: 100%
-}
-
-.LeaderImg {
-  border-radius: 20%;
-  margin-right: 5px;
-}
-
-.tabledata {
-  font-weight: bold;
-  color: #08E6C8;
-  text-shadow: 2px 2px black;
-}
-
-cards:hover {
-  background-color: white;
 }
