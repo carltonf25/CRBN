@@ -39,7 +39,6 @@ class FootprintChart extends Component {
       chartJSX
     )
   }
-
   editLinkClick() {
     let modal = document.querySelector('#modal');
     let modalOverlay = document.querySelector('#modal-overlay');

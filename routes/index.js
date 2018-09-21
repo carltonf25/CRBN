@@ -5,13 +5,6 @@ const ensureAuthenticated = require('../auth').ensureAuthenticated;
 const bodyParser = require('body-parser');
 const axios = require('axios');
 require('dotenv').config();
-const fclone = require('fclone');
-
-/* Initialize Eventbrite SDK */
-
-const eventbriteAPI = require('node-eventbrite');
-const token = process.env.EVENTBRITE_OAUTH_TOKEN;
-
 
 router.use(bodyParser({ urlencoded: true }))
 
@@ -24,8 +17,6 @@ router.get('/test', function (req, res, next) {
         res.json({ loggedIn: false })
     }
 })
-
-
 
 router.get('/userinfo/:id', function (req, res, next) {
     const id = Number(req.params.id);
@@ -54,8 +45,6 @@ router.post('/updatebasicinfo', (req, res) => {
             })
     }
 });
-
-
 
 router.post('/updateInfo', function (req, res, next) {
 
@@ -202,13 +191,13 @@ router.delete('/events/:id/attendees', (req, res) => {
     let userId = req.query.user;
     if (req.isAuthenticated()) {
         models.event.findById(eventId)
-        .then( event => {
-            models.user.findById(userId)
-            .then( user => {
-                event.removeUser([user])
-                .then( response => res.json(response))
+            .then(event => {
+                models.user.findById(userId)
+                    .then(user => {
+                        event.removeUser([user])
+                            .then(response => res.json(response))
+                    })
             })
-        })
     }
 })
 
